@@ -9,15 +9,14 @@ import (
 // KanaToRomaji converts kana (hiragana or katakana) to romaji.
 // It returns the converted romaji string and any error encountered.
 func KanaToRomaji(str string) (string, error) {
-	len := len(str)
-	if len == 0 {
+	if len(str) == 0 {
 		return "", nil
 	}
 
 	var bld strings.Builder
-	bld.Grow(len * 2)
+	bld.Grow(len(str) * 2)
 
-	for i := 0; i < len; i++ {
+	for i := 0; i < len(str); i++ {
 		bld.WriteString("aa")
 	}
 
