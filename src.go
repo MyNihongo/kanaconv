@@ -1,4 +1,4 @@
-// Package kanaconv converts Japanese kana characters (hiragana & katakana) to English characters (romaji) and vice versa.
+//	Package kanaconv converts Japanese kana characters (hiragana & katakana) to English characters (romaji) and vice versa.
 package kanaconv
 
 import (
@@ -6,8 +6,8 @@ import (
 	"strings"
 )
 
-// KanaToRomaji converts kana (hiragana or katakana) to romaji.
-// It returns the converted romaji string and any error encountered.
+//	KanaToRomaji converts kana (hiragana or katakana) to romaji.
+//	It returns the converted romaji string and any error encountered.
 func KanaToRomaji(str string) (string, error) {
 	const byteCount = 3
 	if len(str) == 0 {
@@ -38,6 +38,8 @@ func KanaToRomaji(str string) (string, error) {
 	return bld.String(), nil
 }
 
+//	getKanaRune converts a 3-bit hex value to its unicode code point
+// 		[1110| 0011] [10|00 0001] [10|00 0010] -> [0011 0000 0100 0010]
 func getKanaRune(byte1 byte, byte2 byte, byte3 byte) rune {
 	int1 := int16(byte1&0b0000_1111) << 12 // remove 4 leading bytes, move by 12 bytes
 	int2 := int16(byte2&0b0000_1111) << 6  // remove 4 leading bytes
