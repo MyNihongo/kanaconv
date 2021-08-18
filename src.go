@@ -14,7 +14,7 @@ func KanaToRomaji(str string) (string, error) {
 		return "", nil
 	} else if len(str)%byteCount != 0 {
 		// kana is a 3-bit unicode char
-		return "", errors.New("all characters must be unicode")
+		return "", errors.New("all characters must be kana (3-bit unicode characters)")
 	}
 
 	var bld strings.Builder
