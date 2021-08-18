@@ -41,8 +41,8 @@ func KanaToRomaji(str string) (string, error) {
 //	getKanaRune converts a 3-bit hex value to its unicode code point
 // 		[1110(0011)]+[10(00 0001)]+[10(00 0010)] -> [(0011)+(00 0001)+(00 0010)]
 func getKanaRune(byte1 byte, byte2 byte, byte3 byte) rune {
-	int1 := int16(byte1&0b_0000_1111) << 12 // remove 4 leading bytes, move by 12 bytes
-	int2 := int16(byte2&0b_0011_1111) << 6  // remove 2 leading bytes, move by 6 bytes
-	int3 := int16(byte3 & 0b_0011_1111)     // remove 2 leading bytes
+	int1 := uint16(byte1&0b_0000_1111) << 12 // remove 4 leading bytes, move by 12 bytes
+	int2 := uint16(byte2&0b_0011_1111) << 6  // remove 2 leading bytes, move by 6 bytes
+	int3 := uint16(byte3 & 0b_0011_1111)     // remove 2 leading bytes
 	return rune(int1 + int2 + int3)
 }
