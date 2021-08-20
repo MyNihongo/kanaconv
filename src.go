@@ -20,253 +20,270 @@ func KanaToRomaji(str string) (string, error) {
 	var sb strings.Builder
 	sb.Grow(len(str) * 2)
 
+	var rPrev string
 	for i := 0; i < len(str); i += byteCount {
-		var romaji string
+		var rStr string
+		var rByte byte
 
 		switch getKanaRune(str[i], str[i+1], str[i+2]) {
 		// basic
 		case 'あ', 'ア':
-			sb.WriteByte('a')
-			continue
+			rByte = 'a'
+			goto RomajiByte
 		case 'い', 'イ':
-			sb.WriteByte('i')
-			continue
+			rByte = 'i'
+			goto RomajiByte
 		case 'う', 'ウ':
-			sb.WriteByte('u')
-			continue
+			rByte = 'u'
+			goto RomajiByte
 		case 'え', 'エ':
-			sb.WriteByte('e')
-			continue
+			rByte = 'e'
+			goto RomajiByte
 		case 'お', 'オ':
-			sb.WriteByte('o')
-			continue
+			rByte = 'o'
+			goto RomajiByte
 		case 'ん', 'ン':
-			romaji = "n"
-			goto Romaji
+			rByte = 'n'
+			goto RomajiByte
 		// basic dakuten
 		case 'ゔ', 'ヴ':
-			romaji = "vu"
-			goto Romaji
+			rStr = "vu"
+			goto RomajiString
 		// k
 		case 'か', 'カ':
-			romaji = "ka"
-			goto Romaji
+			rStr = "ka"
+			goto RomajiString
 		case 'き', 'キ':
-			romaji = "ki"
-			goto Romaji
+			rStr = "ki"
+			goto RomajiString
 		case 'く', 'ク':
-			romaji = "ku"
-			goto Romaji
+			rStr = "ku"
+			goto RomajiString
 		case 'け', 'ケ':
-			romaji = "ke"
-			goto Romaji
+			rStr = "ke"
+			goto RomajiString
 		case 'こ', 'コ':
-			romaji = "ko"
-			goto Romaji
+			rStr = "ko"
+			goto RomajiString
 		// k dakuten (g)
 		case 'が', 'ガ':
-			romaji = "ga"
-			goto Romaji
+			rStr = "ga"
+			goto RomajiString
 		case 'ぎ', 'ギ':
-			romaji = "gi"
-			goto Romaji
+			rStr = "gi"
+			goto RomajiString
 		case 'ぐ', 'グ':
-			romaji = "gu"
-			goto Romaji
+			rStr = "gu"
+			goto RomajiString
 		case 'げ', 'ゲ':
-			romaji = "ge"
-			goto Romaji
+			rStr = "ge"
+			goto RomajiString
 		case 'ご', 'ゴ':
-			romaji = "go"
-			goto Romaji
+			rStr = "go"
+			goto RomajiString
 		// s
 		case 'さ', 'サ':
-			romaji = "sa"
-			goto Romaji
+			rStr = "sa"
+			goto RomajiString
 		case 'し', 'シ':
-			romaji = "shi"
-			goto Romaji
+			rStr = "shi"
+			goto RomajiString
 		case 'す', 'ス':
-			romaji = "su"
-			goto Romaji
+			rStr = "su"
+			goto RomajiString
 		case 'せ', 'セ':
-			romaji = "se"
-			goto Romaji
+			rStr = "se"
+			goto RomajiString
 		case 'そ', 'ソ':
-			romaji = "so"
-			goto Romaji
+			rStr = "so"
+			goto RomajiString
 		// s dakuten (z)
 		case 'ざ', 'ザ':
-			romaji = "za"
-			goto Romaji
+			rStr = "za"
+			goto RomajiString
 		case 'じ', 'ジ':
-			romaji = "ji"
-			goto Romaji
+			rStr = "ji"
+			goto RomajiString
 		case 'ず', 'ズ':
-			romaji = "zu"
-			goto Romaji
+			rStr = "zu"
+			goto RomajiString
 		case 'ぜ', 'ゼ':
-			romaji = "ze"
-			goto Romaji
+			rStr = "ze"
+			goto RomajiString
 		case 'ぞ', 'ゾ':
-			romaji = "zo"
-			goto Romaji
+			rStr = "zo"
+			goto RomajiString
 		// t
 		case 'た', 'タ':
-			romaji = "ta"
-			goto Romaji
+			rStr = "ta"
+			goto RomajiString
 		case 'ち', 'チ':
-			romaji = "chi"
-			goto Romaji
+			rStr = "chi"
+			goto RomajiString
 		case 'つ', 'ツ':
-			romaji = "tsu"
-			goto Romaji
+			rStr = "tsu"
+			goto RomajiString
 		case 'て', 'テ':
-			romaji = "te"
-			goto Romaji
+			rStr = "te"
+			goto RomajiString
 		case 'と', 'ト':
-			romaji = "to"
-			goto Romaji
+			rStr = "to"
+			goto RomajiString
 		// t dakuten (d)
 		case 'だ', 'ダ':
-			romaji = "da"
-			goto Romaji
+			rStr = "da"
+			goto RomajiString
 		case 'ぢ', 'ヂ':
-			romaji = "ji"
-			goto Romaji
+			rStr = "ji"
+			goto RomajiString
 		case 'づ', 'ヅ':
-			romaji = "zu"
-			goto Romaji
+			rStr = "zu"
+			goto RomajiString
 		case 'で', 'デ':
-			romaji = "de"
-			goto Romaji
+			rStr = "de"
+			goto RomajiString
 		case 'ど', 'ド':
-			romaji = "do"
-			goto Romaji
+			rStr = "do"
+			goto RomajiString
 		// n
 		case 'な', 'ナ':
-			romaji = "na"
-			goto Romaji
+			rStr = "na"
+			goto RomajiString
 		case 'に', 'ニ':
-			romaji = "ni"
-			goto Romaji
+			rStr = "ni"
+			goto RomajiString
 		case 'ぬ', 'ヌ':
-			romaji = "nu"
-			goto Romaji
+			rStr = "nu"
+			goto RomajiString
 		case 'ね', 'ネ':
-			romaji = "ne"
-			goto Romaji
+			rStr = "ne"
+			goto RomajiString
 		case 'の', 'ノ':
-			romaji = "no"
-			goto Romaji
+			rStr = "no"
+			goto RomajiString
 		// h
 		case 'は', 'ハ':
-			romaji = "ha"
-			goto Romaji
+			rStr = "ha"
+			goto RomajiString
 		case 'ひ', 'ヒ':
-			romaji = "hi"
-			goto Romaji
+			rStr = "hi"
+			goto RomajiString
 		case 'ふ', 'フ':
-			romaji = "fu"
-			goto Romaji
+			rStr = "fu"
+			goto RomajiString
 		case 'へ', 'ヘ':
-			romaji = "he"
-			goto Romaji
+			rStr = "he"
+			goto RomajiString
 		case 'ほ', 'ホ':
-			romaji = "ho"
-			goto Romaji
+			rStr = "ho"
+			goto RomajiString
 		// h dakuten (b)
 		case 'ば', 'バ':
-			romaji = "ba"
-			goto Romaji
+			rStr = "ba"
+			goto RomajiString
 		case 'び', 'ビ':
-			romaji = "bi"
-			goto Romaji
+			rStr = "bi"
+			goto RomajiString
 		case 'ぶ', 'ブ':
-			romaji = "bu"
-			goto Romaji
+			rStr = "bu"
+			goto RomajiString
 		case 'べ', 'ベ':
-			romaji = "be"
-			goto Romaji
+			rStr = "be"
+			goto RomajiString
 		case 'ぼ', 'ボ':
-			romaji = "bo"
-			goto Romaji
+			rStr = "bo"
+			goto RomajiString
 		// h dakuten (p)
 		case 'ぱ', 'パ':
-			romaji = "pa"
-			goto Romaji
+			rStr = "pa"
+			goto RomajiString
 		case 'ぴ', 'ピ':
-			romaji = "pi"
-			goto Romaji
+			rStr = "pi"
+			goto RomajiString
 		case 'ぷ', 'プ':
-			romaji = "pu"
-			goto Romaji
+			rStr = "pu"
+			goto RomajiString
 		case 'ぺ', 'ペ':
-			romaji = "pe"
-			goto Romaji
+			rStr = "pe"
+			goto RomajiString
 		case 'ぽ', 'ポ':
-			romaji = "po"
-			goto Romaji
+			rStr = "po"
+			goto RomajiString
 		// m
 		case 'ま', 'マ':
-			romaji = "ma"
-			goto Romaji
+			rStr = "ma"
+			goto RomajiString
 		case 'み', 'ミ':
-			romaji = "mi"
-			goto Romaji
+			rStr = "mi"
+			goto RomajiString
 		case 'む', 'ム':
-			romaji = "mu"
-			goto Romaji
+			rStr = "mu"
+			goto RomajiString
 		case 'め', 'メ':
-			romaji = "me"
-			goto Romaji
+			rStr = "me"
+			goto RomajiString
 		case 'も', 'モ':
-			romaji = "mo"
-			goto Romaji
+			rStr = "mo"
+			goto RomajiString
 		// y
 		case 'や', 'ヤ':
-			romaji = "ya"
-			goto Romaji
+			rStr = "ya"
+			goto RomajiString
 		case 'ゆ', 'ユ':
-			romaji = "yu"
-			goto Romaji
+			rStr = "yu"
+			goto RomajiString
 		case 'よ', 'ヨ':
-			romaji = "yo"
-			goto Romaji
+			rStr = "yo"
+			goto RomajiString
 		// r
 		case 'ら', 'ラ':
-			romaji = "ra"
-			goto Romaji
+			rStr = "ra"
+			goto RomajiString
 		case 'り', 'リ':
-			romaji = "ri"
-			goto Romaji
+			rStr = "ri"
+			goto RomajiString
 		case 'る', 'ル':
-			romaji = "ru"
-			goto Romaji
+			rStr = "ru"
+			goto RomajiString
 		case 'れ', 'レ':
-			romaji = "re"
-			goto Romaji
+			rStr = "re"
+			goto RomajiString
 		case 'ろ', 'ロ':
-			romaji = "ro"
-			goto Romaji
+			rStr = "ro"
+			goto RomajiString
 		// w
 		case 'わ', 'ワ':
-			romaji = "wa"
-			goto Romaji
+			rStr = "wa"
+			goto RomajiString
 		case 'ゐ', 'ヰ':
-			romaji = "wi"
-			goto Romaji
+			rStr = "wi"
+			goto RomajiString
 		case 'ゑ', 'ヱ':
-			romaji = "we"
-			goto Romaji
+			rStr = "we"
+			goto RomajiString
 		case 'を', 'ヲ':
-			romaji = "wo"
-			goto Romaji
+			rStr = "wo"
+			goto RomajiString
 		}
 
-	Romaji:
-		sb.WriteString(romaji)
+	RomajiByte:
+		if len(rPrev) != 0 {
+			sb.WriteString(rPrev)
+		}
+
+		sb.WriteByte(rByte)
 		continue
+	RomajiString:
+		if len(rPrev) != 0 {
+			sb.WriteString(rPrev)
+		}
+
+		rPrev = rStr
+		continue
+	}
+
+	if len(rPrev) != 0 {
+		sb.WriteString(rPrev)
 	}
 
 	return sb.String(), nil
