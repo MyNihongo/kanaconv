@@ -149,3 +149,35 @@ func TestW(t *testing.T) {
 		assert.Equal(t, expectedRes, res)
 	}
 }
+
+func TestYouon(t *testing.T) {
+	const expectedRes = "youon cannot be the first character in a kana block"
+
+	input := []string{
+		"ゃき", "ゅき", "ょき", "ぁき", "ぃき", "ぅき", "ぇき", "ぉき", "ゎき",
+		"ャキ", "ュキ", "ョキ", "ァキ", "ィキ", "ゥキ", "ェキ", "ォキ", "ヮキ",
+	}
+
+	for _, v := range input {
+		_, res := KanaToRomaji(v)
+		assert.EqualError(t, res, expectedRes)
+	}
+}
+
+func TestYouonK(t *testing.T) {
+	const expectedRes = "kyakyukyokyakyikyukyekyo"
+
+	for _, v := range [2]string{"きゃきゅきょきぁきぃきぅきぇきぉ", "キャキュキョキァキィキゥキェキォ"} {
+		res, _ := KanaToRomaji(v)
+		assert.Equal(t, expectedRes, res)
+	}
+}
+
+func TestYouonKSpecial(t *testing.T) {
+	const expectedRes = "kakikukekokwaki"
+
+	for _, v := range [2]string{"くぁくぃくぅくぇくぉくゎけぃ", "クァクィクゥクェクォクヮケィ"} {
+		res, _ := KanaToRomaji(v)
+		assert.Equal(t, expectedRes, res)
+	}
+}

@@ -3,6 +3,7 @@ package kanaconv
 
 import (
 	"errors"
+	"fmt"
 	"strings"
 )
 
@@ -24,6 +25,7 @@ func KanaToRomaji(str string) (string, error) {
 	for i := 0; i < len(str); i += byteCount {
 		var rStr string
 		var rByte byte
+		var rYouon youon
 
 		switch getKanaRune(str[i], str[i+1], str[i+2]) {
 		// basic
@@ -264,6 +266,34 @@ func KanaToRomaji(str string) (string, error) {
 		case 'を', 'ヲ':
 			rStr = "wo"
 			goto RomajiString
+		// youon
+		case 'ゃ', 'ャ':
+			rYouon = youonYa
+			goto Youon
+		case 'ゅ', 'ュ':
+			rYouon = youonYu
+			goto Youon
+		case 'ょ', 'ョ':
+			rYouon = youonYo
+			goto Youon
+		case 'ぁ', 'ァ':
+			rYouon = youonA
+			goto YouonSpecial
+		case 'ぃ', 'ィ':
+			rYouon = youonI
+			goto YouonSpecial
+		case 'ぅ', 'ゥ':
+			rYouon = youonU
+			goto YouonSpecial
+		case 'ぇ', 'ェ':
+			rYouon = youonE
+			goto YouonSpecial
+		case 'ぉ', 'ォ':
+			rYouon = youonO
+			goto YouonSpecial
+		case 'ゎ', 'ヮ':
+			rYouon = youonWa
+			goto YouonSpecial
 		}
 
 	RomajiByte:
@@ -279,6 +309,35 @@ func KanaToRomaji(str string) (string, error) {
 		}
 
 		rPrev = rStr
+		continue
+	Youon:
+		if len(rPrev) == 0 {
+			return "", errors.New("youon cannot be the first character in a kana block")
+		}
+
+		sb.WriteString(rPrev[0 : len(rPrev)-1])
+
+		{
+			yChar, fChar := rYouon.char(), rPrev[0]
+			rPrev = ""
+
+			switch fChar {
+			case 'k', 'g', 't', 'd', 'n', 'h', 'f', 'b', 'p', 'm', 'r':
+				sb.WriteByte('y')
+				sb.WriteString(yChar)
+				continue
+			case 's', 'j', 'c':
+				sb.WriteString(yChar)
+				continue
+			default:
+				return "", errors.New("unrecognised yōon combination")
+			}
+		}
+	YouonSpecial:
+		if len(rPrev) == 0 {
+			return "", errors.New("youon cannot be the first character in a kana block")
+		}
+		fmt.Printf("youon: %v\n", rYouon)
 		continue
 	}
 
