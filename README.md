@@ -1,7 +1,6 @@
 Conversion between Japanese characters
 
 ## convert kana to romaji
----
 ```go
 package main
 
