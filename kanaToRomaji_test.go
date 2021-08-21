@@ -655,7 +655,7 @@ func TestSokuonW(t *testing.T) {
 
 func TestChouonpuA(t *testing.T) {
 	input := []inp{
-		{input: "アーカ", want: "aaka"},
+		{input: "アー", want: "aa"},
 		{input: "カーカ", want: "kaaka"},
 		{input: "キャーカ", want: "kyaaka"},
 		{input: "ガーカ", want: "gaaka"},
@@ -682,6 +682,154 @@ func TestChouonpuA(t *testing.T) {
 		{input: "ラーカ", want: "raaka"},
 		{input: "リャーカ", want: "ryaaka"},
 		{input: "ワーカ", want: "waaka"},
+	}
+
+	for _, v := range input {
+		got, err := KanaToRomaji(v.input)
+		assert.Equal(t, v.want, got)
+		assert.Nil(t, err)
+	}
+}
+
+func TestChouonpuI(t *testing.T) {
+	input := []inp{
+		{input: "イー", want: "ii"},
+		{input: "キーカ", want: "kiika"},
+		{input: "キィーカ", want: "kyiika"},
+		{input: "ギーカ", want: "giika"},
+		{input: "ギィーカ", want: "gyiika"},
+		{input: "シーカ", want: "shiika"},
+		{input: "シィーカ", want: "shiika"},
+		{input: "ジーカ", want: "jiika"},
+		{input: "ジィーカ", want: "jiika"},
+		{input: "チーカ", want: "chiika"},
+		{input: "チィーカ", want: "chiika"},
+		{input: "ヂーカ", want: "jiika"},
+		{input: "ヂィーカ", want: "jiika"},
+		{input: "ニーカ", want: "niika"},
+		{input: "ニィーカ", want: "nyiika"},
+		{input: "ヒーカ", want: "hiika"},
+		{input: "ヒィーカ", want: "hyiika"},
+		{input: "ビーカ", want: "biika"},
+		{input: "ビィーカ", want: "byiika"},
+		{input: "ピーカ", want: "piika"},
+		{input: "ピィーカ", want: "pyiika"},
+		{input: "ミーカ", want: "miika"},
+		{input: "ミィーカ", want: "myiika"},
+		{input: "リーカ", want: "riika"},
+		{input: "リィーカ", want: "ryiika"},
+		{input: "ヰーカ", want: "wiika"},
+	}
+
+	for _, v := range input {
+		got, err := KanaToRomaji(v.input)
+		assert.Equal(t, v.want, got)
+		assert.Nil(t, err)
+	}
+}
+
+func TestChouonpuU(t *testing.T) {
+	input := []inp{
+		{input: "ウー", want: "uu"},
+		{input: "クーカ", want: "kuuka"},
+		{input: "キューカ", want: "kyuuka"},
+		{input: "グーカ", want: "guuka"},
+		{input: "ギューカ", want: "gyuuka"},
+		{input: "スーカ", want: "suuka"},
+		{input: "シューカ", want: "shuuka"},
+		{input: "ズーカ", want: "zuuka"},
+		{input: "ジューカ", want: "juuka"},
+		{input: "ツーカ", want: "tsuuka"},
+		{input: "チューカ", want: "chuuka"},
+		{input: "ヅーカ", want: "zuuka"},
+		{input: "ヂューカ", want: "juuka"},
+		{input: "ヌーカ", want: "nuuka"},
+		{input: "ニューカ", want: "nyuuka"},
+		{input: "フーカ", want: "fuuka"},
+		{input: "ヒューカ", want: "hyuuka"},
+		{input: "ブーカ", want: "buuka"},
+		{input: "ビューカ", want: "byuuka"},
+		{input: "プーカ", want: "puuka"},
+		{input: "ピューカ", want: "pyuuka"},
+		{input: "ムーカ", want: "muuka"},
+		{input: "ミューカ", want: "myuuka"},
+		{input: "ユーカ", want: "yuuka"},
+		{input: "ルーカ", want: "ruuka"},
+		{input: "リューカ", want: "ryuuka"},
+	}
+
+	for _, v := range input {
+		got, err := KanaToRomaji(v.input)
+		assert.Equal(t, v.want, got)
+		assert.Nil(t, err)
+	}
+}
+
+func TestChouonpuE(t *testing.T) {
+	input := []inp{
+		{input: "エー", want: "ee"},
+		{input: "ケーカ", want: "keeka"},
+		{input: "キェーカ", want: "kyeeka"},
+		{input: "ゲーカ", want: "geeka"},
+		{input: "ギェーカ", want: "gyeeka"},
+		{input: "セーカ", want: "seeka"},
+		{input: "シェーカ", want: "sheeka"},
+		{input: "ゼーカ", want: "zeeka"},
+		{input: "ジェーカ", want: "jeeka"},
+		{input: "テーカ", want: "teeka"},
+		{input: "チェーカ", want: "cheeka"},
+		{input: "デーカ", want: "deeka"},
+		{input: "ヂェーカ", want: "jeeka"},
+		{input: "ネーカ", want: "neeka"},
+		{input: "ニェーカ", want: "nyeeka"},
+		{input: "ヘーカ", want: "heeka"},
+		{input: "ヒェーカ", want: "hyeeka"},
+		{input: "ベーカ", want: "beeka"},
+		{input: "ビェーカ", want: "byeeka"},
+		{input: "ペーカ", want: "peeka"},
+		{input: "ピェーカ", want: "pyeeka"},
+		{input: "メーカ", want: "meeka"},
+		{input: "ミェーカ", want: "myeeka"},
+		{input: "レーカ", want: "reeka"},
+		{input: "リェーカ", want: "ryeeka"},
+		{input: "ヱーカ", want: "weeka"},
+	}
+
+	for _, v := range input {
+		got, err := KanaToRomaji(v.input)
+		assert.Equal(t, v.want, got)
+		assert.Nil(t, err)
+	}
+}
+
+func TestChouonpuO(t *testing.T) {
+	input := []inp{
+		{input: "オー", want: "oo"},
+		{input: "コーカ", want: "kooka"},
+		{input: "キョーカ", want: "kyooka"},
+		{input: "ゴーカ", want: "gooka"},
+		{input: "ギョーカ", want: "gyooka"},
+		{input: "ソーカ", want: "sooka"},
+		{input: "ショーカ", want: "shooka"},
+		{input: "ゾーカ", want: "zooka"},
+		{input: "ジョーカ", want: "jooka"},
+		{input: "トーカ", want: "tooka"},
+		{input: "チョーカ", want: "chooka"},
+		{input: "ドーカ", want: "dooka"},
+		{input: "ヂョーカ", want: "jooka"},
+		{input: "ノーカ", want: "nooka"},
+		{input: "ニョーカ", want: "nyooka"},
+		{input: "ホーカ", want: "hooka"},
+		{input: "ヒョーカ", want: "hyooka"},
+		{input: "ボーカ", want: "booka"},
+		{input: "ビョーカ", want: "byooka"},
+		{input: "ポーカ", want: "pooka"},
+		{input: "ピョーカ", want: "pyooka"},
+		{input: "モーカ", want: "mooka"},
+		{input: "ミョーカ", want: "myooka"},
+		{input: "ローカ", want: "rooka"},
+		{input: "リョーカ", want: "ryooka"},
+		{input: "ヲーカ", want: "wooka"},
 	}
 
 	for _, v := range input {
