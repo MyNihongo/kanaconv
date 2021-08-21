@@ -7,151 +7,151 @@ import (
 )
 
 func TestBasic(t *testing.T) {
-	const expectedRes = "aiueon"
+	const want = "aiueon"
 
 	for _, v := range [2]string{"あいうえおん", "アイウエオン"} {
-		res, _ := KanaToRomaji(v)
-		assert.Equal(t, expectedRes, res)
+		got, _ := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 	}
 }
 
 func TestBasicDakuten(t *testing.T) {
-	const expectedRes = "vu"
+	const want = "vu"
 
 	for _, v := range [2]string{"ゔ", "ヴ"} {
-		res, _ := KanaToRomaji(v)
-		assert.Equal(t, expectedRes, res)
+		got, _ := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 	}
 }
 
 func TestK(t *testing.T) {
-	const expectedRes = "kakikukeko"
+	const want = "kakikukeko"
 
 	for _, v := range [2]string{"かきくけこ", "カキクケコ"} {
-		res, _ := KanaToRomaji(v)
-		assert.Equal(t, expectedRes, res)
+		got, _ := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 	}
 }
 
 func TestKDakuten(t *testing.T) {
-	const expectedRes = "gagigugego"
+	const want = "gagigugego"
 
 	for _, v := range [2]string{"がぎぐげご", "ガギグゲゴ"} {
-		res, _ := KanaToRomaji(v)
-		assert.Equal(t, expectedRes, res)
+		got, _ := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 	}
 }
 
 func TestS(t *testing.T) {
-	const expectedRes = "sashisuseso"
+	const want = "sashisuseso"
 
 	for _, v := range [2]string{"さしすせそ", "サシスセソ"} {
-		res, _ := KanaToRomaji(v)
-		assert.Equal(t, expectedRes, res)
+		got, _ := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 	}
 }
 
 func TestSDakuten(t *testing.T) {
-	const expectedRes = "zajizuzezo"
+	const want = "zajizuzezo"
 
 	for _, v := range [2]string{"ざじずぜぞ", "ザジズゼゾ"} {
-		res, _ := KanaToRomaji(v)
-		assert.Equal(t, expectedRes, res)
+		got, _ := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 	}
 }
 
 func TestT(t *testing.T) {
-	const expectedRes = "tachitsuteto"
+	const want = "tachitsuteto"
 
 	for _, v := range [2]string{"たちつてと", "タチツテト"} {
-		res, _ := KanaToRomaji(v)
-		assert.Equal(t, expectedRes, res)
+		got, _ := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 	}
 }
 
 func TestTDakuten(t *testing.T) {
-	const expectedRes = "dajizudedo"
+	const want = "dajizudedo"
 
 	for _, v := range [2]string{"だじづでど", "ダジヅデド"} {
-		res, _ := KanaToRomaji(v)
-		assert.Equal(t, expectedRes, res)
+		got, _ := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 	}
 }
 
 func TestN(t *testing.T) {
-	const expectedRes = "naninuneno"
+	const want = "naninuneno"
 
 	for _, v := range [2]string{"なにぬねの", "ナニヌネノ"} {
-		res, _ := KanaToRomaji(v)
-		assert.Equal(t, expectedRes, res)
+		got, _ := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 	}
 }
 
 func TestH(t *testing.T) {
-	const expectedRes = "hahifuheho"
+	const want = "hahifuheho"
 
 	for _, v := range [2]string{"はひふへほ", "ハヒフヘホ"} {
-		res, _ := KanaToRomaji(v)
-		assert.Equal(t, expectedRes, res)
+		got, _ := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 	}
 }
 
 func TestHDakutenB(t *testing.T) {
-	const expectedRes = "babibubebo"
+	const want = "babibubebo"
 
 	for _, v := range [2]string{"ばびぶべぼ", "バビブベボ"} {
-		res, _ := KanaToRomaji(v)
-		assert.Equal(t, expectedRes, res)
+		got, _ := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 	}
 }
 
 func TestHDakutenP(t *testing.T) {
-	const expectedRes = "papipupepo"
+	const want = "papipupepo"
 
 	for _, v := range [2]string{"ぱぴぷぺぽ", "パピプペポ"} {
-		res, _ := KanaToRomaji(v)
-		assert.Equal(t, expectedRes, res)
+		got, _ := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 	}
 }
 
 func TestM(t *testing.T) {
-	const expectedRes = "mamimumemo"
+	const want = "mamimumemo"
 
 	for _, v := range [2]string{"まみむめも", "マミムメモ"} {
-		res, _ := KanaToRomaji(v)
-		assert.Equal(t, expectedRes, res)
+		got, _ := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 	}
 }
 
 func TestY(t *testing.T) {
-	const expectedRes = "yayuyo"
+	const want = "yayuyo"
 
 	for _, v := range [2]string{"やゆよ", "ヤユヨ"} {
-		res, _ := KanaToRomaji(v)
-		assert.Equal(t, expectedRes, res)
+		got, _ := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 	}
 }
 
 func TestR(t *testing.T) {
-	const expectedRes = "rarirurero"
+	const want = "rarirurero"
 
 	for _, v := range [2]string{"らりるれろ", "ラリルレロ"} {
 		res, _ := KanaToRomaji(v)
-		assert.Equal(t, expectedRes, res)
+		assert.Equal(t, want, res)
 	}
 }
 
 func TestW(t *testing.T) {
-	const expectedRes = "wawiwewo"
+	const want = "wawiwewo"
 
 	for _, v := range [2]string{"わゐゑを", "ワヰヱヲ"} {
-		res, _ := KanaToRomaji(v)
-		assert.Equal(t, expectedRes, res)
+		got, _ := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 	}
 }
 
 func TestYouon(t *testing.T) {
-	const expectedRes = "youon cannot be the first character in a kana block"
+	const want = "youon cannot be the first character in a kana block"
 
 	input := []string{
 		"ゃき", "ゅき", "ょき", "ぁき", "ぃき", "ぅき", "ぇき", "ぉき", "ゎき",
@@ -159,25 +159,29 @@ func TestYouon(t *testing.T) {
 	}
 
 	for _, v := range input {
-		_, res := KanaToRomaji(v)
-		assert.EqualError(t, res, expectedRes)
+		_, got := KanaToRomaji(v)
+		assert.EqualError(t, got, want)
 	}
 }
 
+func TestYouonI(t *testing.T) {
+	const want = "ye"
+}
+
 // func TestYouonK(t *testing.T) {
-// 	const expectedRes = "kyakyukyokyakyikyukyekyo"
+// 	const want = "kyakyukyokyakyikyukyekyo"
 
 // 	for _, v := range [2]string{"きゃきゅきょきぁきぃきぅきぇきぉ", "キャキュキョキァキィキゥキェキォ"} {
 // 		res, _ := KanaToRomaji(v)
-// 		assert.Equal(t, expectedRes, res)
+// 		assert.Equal(t, want, res)
 // 	}
 // }
 
 // func TestYouonKSpecial(t *testing.T) {
-// 	const expectedRes = "kakikukekokwaki"
+// 	const want = "kakikukekokwaki"
 
 // 	for _, v := range [2]string{"くぁくぃくぅくぇくぉくゎけぃ", "クァクィクゥクェクォクヮケィ"} {
 // 		res, _ := KanaToRomaji(v)
-// 		assert.Equal(t, expectedRes, res)
+// 		assert.Equal(t, want, res)
 // 	}
 // }

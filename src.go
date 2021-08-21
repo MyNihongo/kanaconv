@@ -329,8 +329,6 @@ func KanaToRomaji(str string) (string, error) {
 			return "", errors.New("youon cannot be the first character in a kana block")
 		}
 
-		sb.WriteString(rPrev[0 : len(rPrev)-1])
-
 		{
 			yChar := rYouon.char()
 
