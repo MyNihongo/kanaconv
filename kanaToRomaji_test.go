@@ -464,3 +464,13 @@ func TestYouonRSpecial(t *testing.T) {
 		assert.Nil(t, err)
 	}
 }
+
+func TestYouonWSpecial(t *testing.T) {
+	const want = "wa"
+
+	for _, v := range [2]string{"わぁ", "ワァ"} {
+		res, err := KanaToRomaji(v)
+		assert.Equal(t, want, res)
+		assert.Nil(t, err)
+	}
+}
