@@ -1,6 +1,6 @@
 Conversion between Japanese characters
 
-## Kana (hiragana or katakana) to romaji
+## Kana to romaji
 ```go
 package main
 
