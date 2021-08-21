@@ -297,6 +297,8 @@ func KanaToRomaji(str string) (string, error) {
 		case 'ゎ', 'ヮ':
 			rYouon = youonWa
 			goto YouonSpecial
+		case 'ー':
+			goto Chouonpu
 		// skip
 		case '・':
 			continue
@@ -374,6 +376,24 @@ func KanaToRomaji(str string) (string, error) {
 				default:
 					return "", errors.New("unrecognised yōon syllable")
 				}
+			}
+
+			rPrev = ""
+			continue
+		}
+	Chouonpu:
+		if len(rPrev) == 0 {
+			return "", errors.New("chōonpu cannot be the first character in a block")
+		}
+
+		{
+			rChouonpu := rPrev[len(rPrev)-1]
+			switch rChouonpu {
+			case 'a', 'i', 'u', 'e', 'o':
+				sb.WriteString(rPrev)
+				sb.WriteByte(rChouonpu)
+			default:
+				return "", errors.New("chōonpu cannot extend a consonant")
 			}
 
 			rPrev = ""

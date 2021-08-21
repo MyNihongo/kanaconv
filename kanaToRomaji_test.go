@@ -6,6 +6,11 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+type inp struct {
+	input string
+	want  string
+}
+
 func TestBasic(t *testing.T) {
 	const want = "aiueon"
 
@@ -644,6 +649,44 @@ func TestSokuonW(t *testing.T) {
 	for _, v := range []string{"っわっを", "ッワッヲ"} {
 		got, err := KanaToRomaji(v)
 		assert.Equal(t, want, got)
+		assert.Nil(t, err)
+	}
+}
+
+func TestChouonpuA(t *testing.T) {
+	input := []inp{
+		{input: "アー", want: "aa"},
+		{input: "カー", want: "kaa"},
+		{input: "キャー", want: "kyaa"},
+		{input: "ガー", want: "gaa"},
+		{input: "ギャー", want: "gyaa"},
+		{input: "サー", want: "saa"},
+		{input: "シャー", want: "shaa"},
+		{input: "ザー", want: "zaa"},
+		{input: "ジャー", want: "jaa"},
+		{input: "ター", want: "taa"},
+		{input: "チャー", want: "chaa"},
+		{input: "ダー", want: "daa"},
+		{input: "ヂャー", want: "jaa"},
+		{input: "ナー", want: "naa"},
+		{input: "ニャー", want: "nyaa"},
+		{input: "ハー", want: "haa"},
+		{input: "ヒャー", want: "hyaa"},
+		{input: "バー", want: "baa"},
+		{input: "ビャー", want: "byaa"},
+		{input: "パー", want: "paa"},
+		{input: "ピャー", want: "pyaa"},
+		{input: "マー", want: "maa"},
+		{input: "ミャー", want: "myaa"},
+		{input: "ヤー", want: "yaa"},
+		{input: "ラー", want: "raa"},
+		{input: "リャー", want: "ryaa"},
+		{input: "ワー", want: "waa"},
+	}
+
+	for _, v := range input {
+		got, err := KanaToRomaji(v.input)
+		assert.Equal(t, v.want, got)
 		assert.Nil(t, err)
 	}
 }
