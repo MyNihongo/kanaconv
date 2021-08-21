@@ -303,30 +303,30 @@ func KanaToRomaji(str string) (string, error) {
 		continue
 	Youon:
 		if len(rPrev) == 0 {
-			return "", errors.New("youon cannot be the first character in a kana block")
+			return "", errors.New("yōon cannot be the first character in a kana block")
 		}
 
 		sb.WriteString(rPrev[0 : len(rPrev)-1])
 
 		{
-			yChar, fChar := rYouon.char(), rPrev[0]
-			rPrev = ""
+			yChar := rYouon.char()
 
-			switch fChar {
-			case 'k', 'g', 't', 'd', 'n', 'h', 'f', 'b', 'p', 'm', 'r':
+			switch rPrev[0] {
+			case 'k', 'g', 't', 'd', 'n', 'h', 'f', 'b', 'p', 'm', 'r', 'v':
 				sb.WriteByte('y')
 				sb.WriteString(yChar)
-				continue
 			case 's', 'j', 'c':
 				sb.WriteString(yChar)
-				continue
 			default:
 				return "", errors.New("unrecognised yōon combination")
 			}
+
+			rPrev = ""
+			continue
 		}
 	YouonSpecial:
 		if len(rPrev) == 0 {
-			return "", errors.New("youon cannot be the first character in a kana block")
+			return "", errors.New("yōon cannot be the first character in a kana block")
 		}
 
 		{
@@ -342,18 +342,22 @@ func KanaToRomaji(str string) (string, error) {
 					return "", errors.New("unrecognised yōon vowel")
 				}
 
-				rPrev = ""
 				sb.WriteString(yChar)
-				continue
 			} else {
 				switch rPrev[len(rPrev)-1] {
-				case 'a', 'e', 'o':
+				case 'a', 'u', 'e', 'o':
+					sb.WriteString(rPrev[:len(rPrev)-1])
 					sb.WriteString(yChar)
-					continue
+				case 'i':
+					goto Youon
+				default:
+					return "", errors.New("unrecognised yōon syllable")
 				}
 			}
+
+			rPrev = ""
+			continue
 		}
-		continue
 	}
 
 	if len(rPrev) != 0 {

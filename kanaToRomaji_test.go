@@ -151,7 +151,7 @@ func TestW(t *testing.T) {
 }
 
 func TestYouonInvalid(t *testing.T) {
-	const want = "youon cannot be the first character in a kana block"
+	const want = "yōon cannot be the first character in a kana block"
 
 	input := []string{
 		"ゃき", "ゅき", "ょき", "ぁき", "ぃき", "ぅき", "ぇき", "ぉき", "ゎき",
@@ -193,6 +193,16 @@ func TestYouonU(t *testing.T) {
 	for _, v := range [2]string{"うぃうぇ", "ウィウェ"} {
 		got, _ := KanaToRomaji(v)
 		assert.Equal(t, want, got)
+	}
+}
+
+func TestYouonV(t *testing.T) {
+	const want = "vyavyuvyovavivuvevo"
+
+	for _, v := range [2]string{"ゔゃゔゅゔょゔぁゔぃゔぅゔぇゔぉ", "ヴャヴュヴョヴァヴィヴゥヴェヴォ"} {
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
+		assert.Nil(t, err)
 	}
 }
 
