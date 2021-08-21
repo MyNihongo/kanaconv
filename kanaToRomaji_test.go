@@ -414,3 +414,23 @@ func TestYouonPSpecial(t *testing.T) {
 		assert.Nil(t, err)
 	}
 }
+
+func TestYouonM(t *testing.T) {
+	const want = "myamyumyomyamyimyumyemyo"
+
+	for _, v := range [2]string{"みゃみゅみょみぁみぃみぅみぇみぉ", "ミャミュミョミァミィミゥミェミォ"} {
+		res, err := KanaToRomaji(v)
+		assert.Equal(t, want, res)
+		assert.Nil(t, err)
+	}
+}
+
+func TestYouonmSpecial(t *testing.T) {
+	const want = "mamimumemomwamyumi"
+
+	for _, v := range [2]string{"むぁむぃむぅむぇむぉむゎむゅめぃ", "ムァムィムゥムェムォムヮムュメィ"} {
+		res, err := KanaToRomaji(v)
+		assert.Equal(t, want, res)
+		assert.Nil(t, err)
+	}
+}
