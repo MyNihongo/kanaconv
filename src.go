@@ -21,6 +21,7 @@ func KanaToRomaji(str string) (string, error) {
 	sb.Grow(len(str) * 2)
 
 	var rPrev string
+	var isSokuon bool
 	for i := 0; i < len(str); i += byteCount {
 		var rStr string
 		var rYouon youon
@@ -264,6 +265,10 @@ func KanaToRomaji(str string) (string, error) {
 		case 'を', 'ヲ':
 			rStr = "wo"
 			goto RomajiString
+		// sokuon
+		case 'っ', 'ッ':
+			isSokuon = true
+			continue
 		// youon
 		case 'ゃ', 'ャ':
 			rYouon = youonYa
@@ -300,6 +305,19 @@ func KanaToRomaji(str string) (string, error) {
 	RomajiString:
 		if len(rPrev) != 0 {
 			sb.WriteString(rPrev)
+		}
+
+		if isSokuon {
+			isSokuon = false
+
+			switch rStr[0] {
+			case 'c':
+				sb.WriteByte('t')
+			case 'a', 'i', 'u', 'e', 'o':
+				return "", errors.New("sokuon cannot precede a vowel")
+			default:
+				sb.WriteByte(rStr[0])
+			}
 		}
 
 		rPrev = rStr
