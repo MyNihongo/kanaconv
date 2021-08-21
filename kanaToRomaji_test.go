@@ -261,3 +261,21 @@ func TestYouonGSpecial(t *testing.T) {
 		assert.Equal(t, want, res)
 	}
 }
+
+func TestYouonS(t *testing.T) {
+	const want = "shashushoshashishushesho"
+
+	for _, v := range [2]string{"しゃしゅしょしぁしぃしぅしぇしぉ", "シャシュショシァシィシゥシェシォ"} {
+		res, _ := KanaToRomaji(v)
+		assert.Equal(t, want, res)
+	}
+}
+
+func TestYouonSSpecial(t *testing.T) {
+	const want = "sasisusesoswasi"
+
+	for _, v := range [2]string{"すぁすぃすぅすぇすぉすゎせぃ", "スァスィスゥスェスォスヮセィ"} {
+		res, _ := KanaToRomaji(v)
+		assert.Equal(t, want, res)
+	}
+}
