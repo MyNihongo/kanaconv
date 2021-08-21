@@ -332,10 +332,25 @@ func KanaToRomaji(str string) (string, error) {
 		{
 			yChar := rYouon.char()
 
-			switch rPrev[len(rPrev)-1] {
-			case 'a', 'e', 'o':
+			if len(rPrev) == 1 {
+				switch rPrev[0] {
+				case 'i':
+					sb.WriteByte('y')
+				case 'u':
+					sb.WriteByte('w')
+				default:
+					return "", errors.New("unrecognised yōon vowel")
+				}
+
+				rPrev = ""
 				sb.WriteString(yChar)
 				continue
+			} else {
+				switch rPrev[len(rPrev)-1] {
+				case 'a', 'e', 'o':
+					sb.WriteString(yChar)
+					continue
+				}
 			}
 		}
 		continue

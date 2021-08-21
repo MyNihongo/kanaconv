@@ -150,7 +150,7 @@ func TestW(t *testing.T) {
 	}
 }
 
-func TestYouon(t *testing.T) {
+func TestYouonInvalid(t *testing.T) {
 	const want = "youon cannot be the first character in a kana block"
 
 	input := []string{
@@ -164,8 +164,36 @@ func TestYouon(t *testing.T) {
 	}
 }
 
+func TestYouonSpecialInvalid(t *testing.T) {
+	const want = "unrecognised yōon vowel"
+
+	input := []string{
+		"あぃ", "えぃ", "おぃ",
+		"アィ", "エィ", "オィ",
+	}
+
+	for _, v := range input {
+		_, got := KanaToRomaji(v)
+		assert.EqualError(t, got, want)
+	}
+}
+
 func TestYouonI(t *testing.T) {
 	const want = "ye"
+
+	for _, v := range [2]string{"いぇ", "イェ"} {
+		got, _ := KanaToRomaji(v)
+		assert.Equal(t, want, got)
+	}
+}
+
+func TestYouonU(t *testing.T) {
+	const want = "wiwe"
+
+	for _, v := range [2]string{"うぃうぇ", "ウィウェ"} {
+		got, _ := KanaToRomaji(v)
+		assert.Equal(t, want, got)
+	}
 }
 
 // func TestYouonK(t *testing.T) {
