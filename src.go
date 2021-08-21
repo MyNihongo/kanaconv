@@ -292,6 +292,9 @@ func KanaToRomaji(str string) (string, error) {
 		case 'ゎ', 'ヮ':
 			rYouon = youonWa
 			goto YouonSpecial
+		// skip
+		case '・':
+			continue
 		}
 
 	RomajiString:

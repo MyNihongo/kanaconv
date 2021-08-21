@@ -150,8 +150,8 @@ func TestR(t *testing.T) {
 	const want = "rarirurero"
 
 	for _, v := range [2]string{"らりるれろ", "ラリルレロ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -230,8 +230,8 @@ func TestYouonK(t *testing.T) {
 	const want = "kyakyukyokyakyikyukyekyo"
 
 	for _, v := range [2]string{"きゃきゅきょきぁきぃきぅきぇきぉ", "キャキュキョキァキィキゥキェキォ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -240,8 +240,8 @@ func TestYouonKSpecial(t *testing.T) {
 	const want = "kakikukekokwaki"
 
 	for _, v := range [2]string{"くぁくぃくぅくぇくぉくゎけぃ", "クァクィクゥクェクォクヮケィ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -250,8 +250,8 @@ func TestYouonG(t *testing.T) {
 	const want = "gyagyugyogyagyigyugyegyo"
 
 	for _, v := range [2]string{"ぎゃぎゅぎょぎぁぎぃぎぅぎぇぎぉ", "ギャギュギョギァギィギゥギェギォ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -260,8 +260,8 @@ func TestYouonGSpecial(t *testing.T) {
 	const want = "gagigugegogwagi"
 
 	for _, v := range [2]string{"ぐぁぐぃぐぅぐぇぐぉぐゎげぃ", "グァグィグゥグェグォグヮゲィ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -270,8 +270,8 @@ func TestYouonS(t *testing.T) {
 	const want = "shashushoshashishushesho"
 
 	for _, v := range [2]string{"しゃしゅしょしぁしぃしぅしぇしぉ", "シャシュショシァシィシゥシェシォ"} {
-		res, _ := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, _ := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 	}
 }
 
@@ -279,8 +279,8 @@ func TestYouonSSpecial(t *testing.T) {
 	const want = "sasisusesoswasi"
 
 	for _, v := range [2]string{"すぁすぃすぅすぇすぉすゎせぃ", "スァスィスゥスェスォスヮセィ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -289,8 +289,8 @@ func TestYouonZ(t *testing.T) {
 	const want = "jajujojajijujejo"
 
 	for _, v := range [2]string{"じゃじゅじょじぁじぃじぅじぇじぉ", "ジャジュジョジァジィジゥジェジォ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -299,8 +299,8 @@ func TestYouonZSpecial(t *testing.T) {
 	const want = "zazizuzezozwazi"
 
 	for _, v := range [2]string{"ずぁずぃずぅずぇずぉずゎぜぃ", "ズァズィズゥズェズォズヮゼィ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -309,8 +309,8 @@ func TestYouonT(t *testing.T) {
 	const want = "chachuchochachichuchecho"
 
 	for _, v := range [2]string{"ちゃちゅちょちぁちぃちぅちぇちぉ", "チャチュチョチァチィチゥチェチォ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -319,8 +319,8 @@ func TestYouonTSpecial(t *testing.T) {
 	const want = "tsatsitsutsetsotswatityutu"
 
 	for _, v := range [2]string{"つぁつぃつぅつぇつぉつゎてぃてゅとぅ", "ツァツィツゥツェツォツヮティテュトゥ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -329,8 +329,8 @@ func TestYouonDSpecial(t *testing.T) {
 	const want = "zazizuzezozwadidyudu"
 
 	for _, v := range [2]string{"づぁづぃづぅづぇづぉづゎでぃでゅどぅ", "ヅァヅィヅゥヅェヅォヅヮディデュドゥ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -339,8 +339,8 @@ func TestYouonN(t *testing.T) {
 	const want = "nyanyunyonyanyinyunyenyo"
 
 	for _, v := range [2]string{"にゃにゅにょにぁにぃにぅにぇにぉ", "ニャニュニョニァニィニゥニェニォ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -349,8 +349,8 @@ func TestYouonNSpecial(t *testing.T) {
 	const want = "naninunenonwani"
 
 	for _, v := range [2]string{"ぬぁぬぃぬぅぬぇぬぉぬゎねぃ", "ヌァヌィヌゥヌェヌォヌヮネィ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -359,8 +359,8 @@ func TestYouonH(t *testing.T) {
 	const want = "hyahyuhyohyahyihyuhyehyo"
 
 	for _, v := range [2]string{"ひゃひゅひょひぁひぃひぅひぇひぉ", "ヒャヒュヒョヒァヒィヒゥヒェヒォ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -369,8 +369,8 @@ func TestYouonHSpecial(t *testing.T) {
 	const want = "fafifufefofwafyuhi"
 
 	for _, v := range [2]string{"ふぁふぃふぅふぇふぉふゎふゅへぃ", "ファフィフゥフェフォフヮフュヘィ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -379,8 +379,8 @@ func TestYouonB(t *testing.T) {
 	const want = "byabyubyobyabyibyubyebyo"
 
 	for _, v := range [2]string{"びゃびゅびょびぁびぃびぅびぇびぉ", "ビャビュビョビァビィビゥビェビォ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -389,8 +389,8 @@ func TestYouonBSpecial(t *testing.T) {
 	const want = "babibubebobwabyubi"
 
 	for _, v := range [2]string{"ぶぁぶぃぶぅぶぇぶぉぶゎぶゅべぃ", "ブァブィブゥブェブォブヮブュベィ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -399,8 +399,8 @@ func TestYouonP(t *testing.T) {
 	const want = "pyapyupyopyapyipyupyepyo"
 
 	for _, v := range [2]string{"ぴゃぴゅぴょぴぁぴぃぴぅぴぇぴぉ", "ピャピュピョピァピィピゥピェピォ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -409,8 +409,8 @@ func TestYouonPSpecial(t *testing.T) {
 	const want = "papipupepopwapyupi"
 
 	for _, v := range [2]string{"ぷぁぷぃぷぅぷぇぷぉぷゎぷゅぺぃ", "プァプィプゥプェプォプヮプュペィ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -419,8 +419,8 @@ func TestYouonM(t *testing.T) {
 	const want = "myamyumyomyamyimyumyemyo"
 
 	for _, v := range [2]string{"みゃみゅみょみぁみぃみぅみぇみぉ", "ミャミュミョミァミィミゥミェミォ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -429,8 +429,8 @@ func TestYouonMSpecial(t *testing.T) {
 	const want = "mamimumemomwamyumi"
 
 	for _, v := range [2]string{"むぁむぃむぅむぇむぉむゎむゅめぃ", "ムァムィムゥムェムォムヮムュメィ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -439,8 +439,8 @@ func TestYouonYSpecial(t *testing.T) {
 	const want = "yayiyuyeyoywa"
 
 	for _, v := range [2]string{"ゆぁゆぃゆぅゆぇゆぉゆゎ", "ユァユィユゥユェユォユヮ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -449,8 +449,8 @@ func TestYouonR(t *testing.T) {
 	const want = "ryaryuryoryaryiryuryeryo"
 
 	for _, v := range [2]string{"りゃりゅりょりぁりぃりぅりぇりぉ", "リャリュリョリァリィリゥリェリォ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -459,8 +459,8 @@ func TestYouonRSpecial(t *testing.T) {
 	const want = "rarirurerorwaryuri"
 
 	for _, v := range [2]string{"るぁるぃるぅるぇるぉるゎるゅれぃ", "ルァルィルゥルェルォルヮルュレィ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
 }
@@ -469,8 +469,16 @@ func TestYouonWSpecial(t *testing.T) {
 	const want = "wa"
 
 	for _, v := range [2]string{"わぁ", "ワァ"} {
-		res, err := KanaToRomaji(v)
-		assert.Equal(t, want, res)
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	}
+}
+
+func TestPunctuationMark(t *testing.T) {
+	const want = "jiendo"
+	got, err := KanaToRomaji("ジ・エンド")
+
+	assert.Equal(t, want, got)
+	assert.Nil(t, err)
 }
