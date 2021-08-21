@@ -587,3 +587,63 @@ func TestSokuonH(t *testing.T) {
 		assert.Nil(t, err)
 	}
 }
+
+func TestSokuonB(t *testing.T) {
+	const want = "bbabbibbubbebbo"
+
+	for _, v := range []string{"っばっびっぶっべっぼ", "ッバッビッブッベッボ"} {
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
+		assert.Nil(t, err)
+	}
+}
+
+func TestSokuonP(t *testing.T) {
+	const want = "ppappippuppeppo"
+
+	for _, v := range []string{"っぱっぴっぷっぺっぽ", "ッパッピップッペッポ"} {
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
+		assert.Nil(t, err)
+	}
+}
+
+func TestSokuonM(t *testing.T) {
+	const want = "mmammimmummemmo"
+
+	for _, v := range []string{"っまっみっむっめっも", "ッマッミッムッメッモ"} {
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
+		assert.Nil(t, err)
+	}
+}
+
+func TestSokuonY(t *testing.T) {
+	const want = "yyayyuyyo"
+
+	for _, v := range []string{"っやっゆっよ", "ッヤッユッヨ"} {
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
+		assert.Nil(t, err)
+	}
+}
+
+func TestSokuonR(t *testing.T) {
+	const want = "rrarrirrurrerro"
+
+	for _, v := range []string{"っらっりっるっれっろ", "ッラッリッルッレッロ"} {
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
+		assert.Nil(t, err)
+	}
+}
+
+func TestSokuonW(t *testing.T) {
+	const want = "wwawwo"
+
+	for _, v := range []string{"っわっを", "ッワッヲ"} {
+		got, err := KanaToRomaji(v)
+		assert.Equal(t, want, got)
+		assert.Nil(t, err)
+	}
+}
