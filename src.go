@@ -385,13 +385,11 @@ func KanaToRomaji(str string) (string, error) {
 			rChouonpu := rPrev[len(rPrev)-1]
 			switch rChouonpu {
 			case 'a', 'i', 'u', 'e', 'o':
-				sb.WriteString(rPrev)
-				sb.WriteByte(rChouonpu)
+				rPrev += string(rChouonpu)
 			default:
 				return "", errors.New("chōonpu cannot extend a consonant")
 			}
 
-			rPrev = ""
 			continue
 		}
 	}

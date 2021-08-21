@@ -653,40 +653,40 @@ func TestSokuonW(t *testing.T) {
 	}
 }
 
-// func TestChouonpuA(t *testing.T) {
-// 	input := []inp{
-// 		{input: "アー", want: "aa"},
-// 		{input: "カー", want: "kaa"},
-// 		{input: "キャー", want: "kyaa"},
-// 		{input: "ガー", want: "gaa"},
-// 		{input: "ギャー", want: "gyaa"},
-// 		{input: "サー", want: "saa"},
-// 		{input: "シャー", want: "shaa"},
-// 		{input: "ザー", want: "zaa"},
-// 		{input: "ジャー", want: "jaa"},
-// 		{input: "ター", want: "taa"},
-// 		{input: "チャー", want: "chaa"},
-// 		{input: "ダー", want: "daa"},
-// 		{input: "ヂャー", want: "jaa"},
-// 		{input: "ナー", want: "naa"},
-// 		{input: "ニャー", want: "nyaa"},
-// 		{input: "ハー", want: "haa"},
-// 		{input: "ヒャー", want: "hyaa"},
-// 		{input: "バー", want: "baa"},
-// 		{input: "ビャー", want: "byaa"},
-// 		{input: "パー", want: "paa"},
-// 		{input: "ピャー", want: "pyaa"},
-// 		{input: "マー", want: "maa"},
-// 		{input: "ミャー", want: "myaa"},
-// 		{input: "ヤー", want: "yaa"},
-// 		{input: "ラー", want: "raa"},
-// 		{input: "リャー", want: "ryaa"},
-// 		{input: "ワー", want: "waa"},
-// 	}
+func TestChouonpuA(t *testing.T) {
+	input := []inp{
+		{input: "アーカ", want: "aaka"},
+		{input: "カーカ", want: "kaaka"},
+		{input: "キャーカ", want: "kyaaka"},
+		{input: "ガーカ", want: "gaaka"},
+		{input: "ギャーカ", want: "gyaaka"},
+		{input: "サーカ", want: "saaka"},
+		{input: "シャーカ", want: "shaaka"},
+		{input: "ザーカ", want: "zaaka"},
+		{input: "ジャーカ", want: "jaaka"},
+		{input: "ターカ", want: "taaka"},
+		{input: "チャーカ", want: "chaaka"},
+		{input: "ダーカ", want: "daaka"},
+		{input: "ヂャーカ", want: "jaaka"},
+		{input: "ナーカ", want: "naaka"},
+		{input: "ニャーカ", want: "nyaaka"},
+		{input: "ハーカ", want: "haaka"},
+		{input: "ヒャーカ", want: "hyaaka"},
+		{input: "バーカ", want: "baaka"},
+		{input: "ビャーカ", want: "byaaka"},
+		{input: "パーカ", want: "paaka"},
+		{input: "ピャーカ", want: "pyaaka"},
+		{input: "マーカ", want: "maaka"},
+		{input: "ミャーカ", want: "myaaka"},
+		{input: "ヤーカ", want: "yaaka"},
+		{input: "ラーカ", want: "raaka"},
+		{input: "リャーカ", want: "ryaaka"},
+		{input: "ワーカ", want: "waaka"},
+	}
 
-// 	for _, v := range input {
-// 		got, err := KanaToRomaji(v.input)
-// 		assert.Equal(t, v.want, got)
-// 		assert.Nil(t, err)
-// 	}
-// }
+	for _, v := range input {
+		got, err := KanaToRomaji(v.input)
+		assert.Equal(t, v.want, got)
+		assert.Nil(t, err)
+	}
+}
