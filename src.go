@@ -8,7 +8,7 @@ import (
 
 //	KanaToRomaji converts kana (hiragana or katakana) to romaji.
 //	It returns the converted romaji string and any error encountered.
-func KanaToRomaji(str string) (string, error) {
+func KanaToRomaji(str string) (result string, err error) {
 	const byteCount = 3
 	if len(str) == 0 {
 		return "", nil
@@ -403,7 +403,7 @@ func KanaToRomaji(str string) (string, error) {
 
 //	getKanaRune converts a 3-bit hex value to its unicode code point
 // 		[1110(0011)]+[10(00 0001)]+[10(00 0010)] -> [(0011)+(00 0001)+(00 0010)]
-func getKanaRune(byte1 byte, byte2 byte, byte3 byte) rune {
+func getKanaRune(byte1, byte2, byte3 byte) rune {
 	int1 := uint16(byte1&0b_0000_1111) << 12 // remove 4 leading bytes, move by 12 bytes
 	int2 := uint16(byte2&0b_0011_1111) << 6  // remove 2 leading bytes, move by 6 bytes
 	int3 := uint16(byte3 & 0b_0011_1111)     // remove 2 leading bytes
