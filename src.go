@@ -302,6 +302,8 @@ func KanaToRomaji(str string) (result string, err error) {
 		// skip
 		case '・':
 			continue
+		default:
+			return "", errors.New("there is not a valid kana character")
 		}
 
 	RomajiString:

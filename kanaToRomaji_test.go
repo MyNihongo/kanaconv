@@ -838,3 +838,17 @@ func TestChouonpuO(t *testing.T) {
 		assert.Nil(t, err)
 	}
 }
+
+func TestNonKanaCharacters(t *testing.T) {
+	inputs := []string{
+		"日本",
+		"English",
+	}
+
+	for _, input := range inputs {
+		got, err := KanaToRomaji(input)
+
+		assert.Empty(t, got)
+		assert.NotNil(t, err)
+	}
+}
